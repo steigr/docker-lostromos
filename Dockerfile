@@ -35,7 +35,7 @@ RUN  export CGO_ENABLED=0 \
  &&  install -m 0755 lostromos /go/bin/lostromos
 
 ARG  UPX_ARGS=-6
-RUN  upx ${UPX_AuRGS} /go/bin/lostromos
+RUN  upx ${UPX_ARGS} /go/bin/lostromos
 
 FROM docker.io/library/alpine:3.7 AS lostromos
 RUN adduser -D lostromos
