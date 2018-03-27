@@ -30,6 +30,7 @@ RUN  export CGO_ENABLED=0 \
             GOARCH=amd64 \
  &&  go get -v -d github.com/wpengine/lostromos \
  &&  cd /go/src/github.com/wpengine/lostromos \
+ &&  sed -i 's|SetConfigName("lostromos\.yaml|SetConfigName("lostromos|' cmd/cmd.go \
  &&  make build \
  &&  install -m 0755 lostromos /go/bin/lostromos
 
