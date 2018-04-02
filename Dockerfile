@@ -1,7 +1,4 @@
-FROM quay.io/steigr/upx:v3.95 AS upx
-
 FROM docker.io/library/golang:1.10.0-stretch AS lostromos-builder
-COPY --from=upx /bin/upx /bin/upx
 
 RUN  export CGO_ENABLED=0 \
             GOOS=linux \
@@ -12,6 +9,7 @@ RUN  export CGO_ENABLED=0 \
  &&  make build \
  &&  install -m 0755 lostromos /go/bin/lostromos
 
+COPY --from=quay.io/steigr/upx:v3.95 /bin/upx /bin/upx
 ARG  UPX_ARGS="-9 --best --brute --ultra-brute" 
 RUN  upx ${UPX_ARGS} /go/bin/lostromos
 
