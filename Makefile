@@ -1,4 +1,3 @@
-
 TAG      ?= $(shell git rev-parse HEAD)
 IMAGE    ?= quay.io/steigr/lostromos
 

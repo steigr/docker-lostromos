@@ -1,8 +1,7 @@
+FROM quay.io/steigr/upx:v3.94 AS upx
+
 FROM docker.io/library/golang:1.10.0-stretch AS lostromos-builder
-RUN  export DEBIAN_FRONTEND=noninteractive \
- &&  curl -Lo /root/libucl.deb http://ftp.de.debian.org/debian/pool/main/u/ucl/libucl1_1.03+repack-4_amd64.deb \
- &&  curl -Lo /root/upx.deb http://ftp.de.debian.org/debian/pool/main/u/upx-ucl/upx-ucl_3.94+git20171222-1_amd64.deb \
- &&  dpkg -i /root/*.deb
+COPY --from=upx /bin/upx /bin/upx
 
 RUN  export CGO_ENABLED=0 \
             GOOS=linux \
