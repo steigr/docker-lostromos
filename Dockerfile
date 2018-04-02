@@ -1,4 +1,4 @@
-FROM quay.io/steigr/upx:v3.94 AS upx
+FROM quay.io/steigr/upx:v3.95 AS upx
 
 FROM docker.io/library/golang:1.10.0-stretch AS lostromos-builder
 COPY --from=upx /bin/upx /bin/upx
