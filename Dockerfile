@@ -1,4 +1,4 @@
-FROM docker.io/library/golang:1.10.0-stretch AS lostromos-builder
+FROM docker.io/library/golang:1.10.2-stretch AS lostromos-builder
 
 RUN  export CGO_ENABLED=0 \
             GOOS=linux \
